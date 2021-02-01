@@ -20,7 +20,7 @@ class Box {
   checkWin() {
     for (i=0; i<8 ;i++){
         if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])){
-            return true
+            return (this.arr[winCombo[i][0]] !== "")
         }
     }
     return false
