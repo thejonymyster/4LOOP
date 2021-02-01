@@ -1,0 +1,23 @@
+
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: red solid 2px;
+    flex-wrap: wrap;
+}
+
+.bigsquare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: blue solid 2px;
+    width: 30%;
+}
+
+div {
+    width: 30%;
+    border: black solid 2px;
+}
