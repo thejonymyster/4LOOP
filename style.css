@@ -6,6 +6,7 @@ main {
     justify-content: center;
     border: red solid 2px;
     flex-wrap: wrap;
+    padding: 1%;
 }
 
 .bigsquare {
@@ -15,9 +16,12 @@ main {
     flex-wrap: wrap;
     border: blue solid 2px;
     width: 30%;
+    padding: 1%;
+    margin: 0.5%;
 }
 
 div {
     width: 30%;
     border: black solid 2px;
+    margin: 0.5%;
 }
