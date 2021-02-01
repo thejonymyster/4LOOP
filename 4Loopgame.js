@@ -1,5 +1,9 @@
 let turn = 0
 
+function changeTurn() {
+    turn = 1 - turn
+}
+
 const winCombo = [
     [0, 1, 2],
     [3, 4, 5],
@@ -12,21 +16,32 @@ const winCombo = [
   ];
 
 class Box {
-    constructor(win, array) {
+    constructor(win, arr) {
       this.win = 0
       this.arr = ["", "", "", "", "", "", "", "", ""]
     }
 
   checkWin() {
-    for (i=0; i<8 ;i++){
+    for (let i=0; i<8 ;i++){
         if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])){
-            return (this.arr[winCombo[i][0]] !== "")
+            if ((this.arr[winCombo[i][0]] !== "") && (this.arr[winCombo[i][1]] !== "") && (this.arr[winCombo[i][2]] !== "")) {
+                return true
+            }
         }
     }
     return false
   }
 }
 
-function changeTurn() {
-    turn = 1 - turn
+let Box1 = new Box(0,[])
+
+document.querySelector(".game-box").onclick = function(e){
+    let cell = e.target.id
+    if(Number(cell)>0){
+        Box1.arr[cell - 1] = turn
+        if (Box1.checkWin()){
+            alert("WIN")
+        }
+        changeTurn()
+    }
 }
