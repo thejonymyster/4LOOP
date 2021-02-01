@@ -21,7 +21,8 @@ main {
 }
 
 div {
-    width: 30%;
+    width: 9vw;
+    height: 9vh;
     border: black solid 2px;
     margin: 0.5%;
 }
