@@ -45,30 +45,55 @@ document.querySelector(".game-box").onclick = function (e) {
     }
 }
 
-    // document.querySelector(".small-box").onclick = function (e) {
-    //     if (turn) {
-    //         this.classList.add("red")
-    //     } else {
-    //         this.classList.add("blue")
-    //     }
-    //     console.log(this.classList)
-    // }
+document.querySelectorAll(".small-box").forEach(function (box) {
 
 
-    // jQuery(document).ready(function($) {
 
-    //     $('#coin').on('click', function () {
-    //         var flipResult = Math.random();
-    //         $('#coin').removeClass();
-    //         setTimeout(function () {
-    //             if (flipResult <= 0.5) {
-    //                 $('#coin').addClass('heads');
-    //                 console.log('it is head');
-    //             }
-    //             else {
-    //                 $('#coin').addClass('tails');
-    //                 console.log('it is tails');
-    //             }
-    //         }, 100);
-    //     });
-    // });
+    box.onclick = function (e) {
+        if (turn) {
+            this.classList.add("red")
+        } else {
+            this.classList.add("blue")
+        }
+        console.log(this.classList)
+    }
+})
+
+
+
+// for (let i = 0; i < 8; i++) {
+
+//     document.querySelector("body").innerHTML += `
+// <div class="game-box">
+
+// <div class="small-box" id="1">
+
+// </div>
+// <div class="small-box" id="2">
+
+// </div>
+// <div class="small-box" id="3">
+
+// </div>
+// <div class="small-box" id="4">
+
+// </div>
+// <div class="small-box" id="5">
+
+// </div>
+// <div class="small-box" id="6">
+
+// </div>
+// <div class="small-box" id="7">
+
+// </div>
+// <div class="small-box" id="8">
+
+// </div>
+// <div class="small-box" id="9">
+
+// </div>
+
+// </div>
+// `
+// }
