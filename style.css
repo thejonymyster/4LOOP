@@ -64,12 +64,8 @@ main {
     background-color: #407294; 
     color: white; 
     transition: 0.7s;
-    font-size: 50px;
+    font-size: 60px;
   }
-
-
-   
-
 
 
 .red {
@@ -78,4 +74,10 @@ main {
 
 .blue {
     background-color: blue;
+}
+
+#turn {
+    color: white;
+    font-size: 60px;
+    padding-bottom: 30px;
 }
