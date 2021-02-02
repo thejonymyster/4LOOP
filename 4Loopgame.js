@@ -16,59 +16,59 @@ const winCombo = [
 ];
 
 class Box {
-<<<<<<< HEAD
-    constructor(win, array) {
+    constructor(win, arr) {
         this.win = 0
         this.arr = ["", "", "", "", "", "", "", "", ""]
     }
 
     checkWin() {
-        for (i = 0; i < 8; i++) {
+        for (let i = 0; i < 8; i++) {
             if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])) {
-=======
-    constructor(win, arr) {
-      this.win = 0
-      this.arr = ["", "", "", "", "", "", "", "", ""]
-    }
-
-  checkWin() {
-    for (let i=0; i<8 ;i++){
-        if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])){
-            if ((this.arr[winCombo[i][0]] !== "") && (this.arr[winCombo[i][1]] !== "") && (this.arr[winCombo[i][2]] !== "")) {
->>>>>>> 6a31d8131995704a7c2f8ca6678839e7c504bf30
-                return true
+                if ((this.arr[winCombo[i][0]] !== "") && (this.arr[winCombo[i][1]] !== "") && (this.arr[winCombo[i][2]] !== "")) {
+                    return true
+                }
             }
+            return false
         }
-        return false
     }
-}
 
-<<<<<<< HEAD
-function changeTurn() {
-    turn = 1 - turn
-}
+    Box1 = new Box(0, [])
 
-
-=======
-let Box1 = new Box(0,[])
-
-document.querySelector(".game-box").onclick = function(e){
-    let cell = e.target.id
-    if(Number(cell)>0){
-        Box1.arr[cell - 1] = turn
-        if (Box1.checkWin()){
-            alert("WIN")
+    document.querySelector(".game-box").onclick = function (e) {
+        let cell = e.target.id
+        if (Number(cell) > 0) {
+            Box1.arr[cell - 1] = turn
+            if (Box1.checkWin()) {
+                alert("WIN")
+            }
+            changeTurn()
         }
-        changeTurn()
     }
-}
 
-document.querySelector(".small-box").onclick = function(e){
-      if (turn) {
-        this.classList.add("red")
-      } else {
-        this.classList.add("blue")
-      }
-console.log(this.classList)
-}
->>>>>>> 6a31d8131995704a7c2f8ca6678839e7c504bf30
+    document.querySelector(".small-box").onclick = function (e) {
+        if (turn) {
+            this.classList.add("red")
+        } else {
+            this.classList.add("blue")
+        }
+        console.log(this.classList)
+    }
+
+
+    jQuery(document).ready(function($) {
+
+        $('#coin').on('click', function () {
+            var flipResult = Math.random();
+            $('#coin').removeClass();
+            setTimeout(function () {
+                if (flipResult <= 0.5) {
+                    $('#coin').addClass('heads');
+                    console.log('it is head');
+                }
+                else {
+                    $('#coin').addClass('tails');
+                    console.log('it is tails');
+                }
+            }, 100);
+        });
+    });
