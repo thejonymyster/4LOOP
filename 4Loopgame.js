@@ -9,24 +9,26 @@ const winCombo = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6],
-  ];
+];
 
 class Box {
     constructor(win, array) {
-      this.win = 0
-      this.arr = ["", "", "", "", "", "", "", "", ""]
+        this.win = 0
+        this.arr = ["", "", "", "", "", "", "", "", ""]
     }
 
-  checkWin() {
-    for (i=0; i<8 ;i++){
-        if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])){
-            return true
+    checkWin() {
+        for (i = 0; i < 8; i++) {
+            if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])) {
+                return true
+            }
         }
+        return false
     }
-    return false
-  }
 }
 
 function changeTurn() {
     turn = 1 - turn
 }
+
+
