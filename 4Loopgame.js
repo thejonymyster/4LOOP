@@ -29,10 +29,10 @@ class Box {
                 return true
             }
         }
+      }
         return false
-    }
-}
-}
+              }
+          }
 
 let Box1 = new Box(0,[])
 
