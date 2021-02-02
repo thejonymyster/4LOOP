@@ -28,47 +28,47 @@ class Box {
                     return true
                 }
             }
-            return false
-        }
+        } return false
     }
+}
 
-    Box1 = new Box(0, [])
+let Box1 = new Box(0, [])
 
-    document.querySelector(".game-box").onclick = function (e) {
-        let cell = e.target.id
-        if (Number(cell) > 0) {
-            Box1.arr[cell - 1] = turn
-            if (Box1.checkWin()) {
-                alert("WIN")
-            }
-            changeTurn()
+document.querySelector(".game-box").onclick = function (e) {
+    let cell = e.target.id
+    if (Number(cell) > 0) {
+        Box1.arr[cell - 1] = turn
+        if (Box1.checkWin()) {
+            alert("WIN")
         }
+        changeTurn()
     }
+}
 
-    document.querySelector(".small-box").onclick = function (e) {
-        if (turn) {
-            this.classList.add("red")
-        } else {
-            this.classList.add("blue")
-        }
-        console.log(this.classList)
-    }
+    // document.querySelector(".small-box").onclick = function (e) {
+    //     if (turn) {
+    //         this.classList.add("red")
+    //     } else {
+    //         this.classList.add("blue")
+    //     }
+    //     console.log(this.classList)
+    // }
 
 
-    jQuery(document).ready(function($) {
+    // jQuery(document).ready(function($) {
 
-        $('#coin').on('click', function () {
-            var flipResult = Math.random();
-            $('#coin').removeClass();
-            setTimeout(function () {
-                if (flipResult <= 0.5) {
-                    $('#coin').addClass('heads');
-                    console.log('it is head');
-                }
-                else {
-                    $('#coin').addClass('tails');
-                    console.log('it is tails');
-                }
-            }, 100);
-        });
-    });
+    //     $('#coin').on('click', function () {
+    //         var flipResult = Math.random();
+    //         $('#coin').removeClass();
+    //         setTimeout(function () {
+    //             if (flipResult <= 0.5) {
+    //                 $('#coin').addClass('heads');
+    //                 console.log('it is head');
+    //             }
+    //             else {
+    //                 $('#coin').addClass('tails');
+    //                 console.log('it is tails');
+    //             }
+    //         }, 100);
+    //     });
+    // });
