@@ -45,3 +45,12 @@ document.querySelector(".game-box").onclick = function(e){
         changeTurn()
     }
 }
+
+document.querySelector(".small-box").onclick = function(e){
+      if (turn) {
+        this.classList.add("red")
+      } else {
+        this.classList.add("blue")
+      }
+console.log(this.classList)
+}
