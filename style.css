@@ -1,6 +1,6 @@
 
 
-main {
+/* main {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,4 +25,111 @@ div {
     height: 9vh;
     border: black solid 2px;
     margin: 0.5%;
+} */
+
+/* .container {
+    width: 320px;
+    height: 320px;
+    margin: auto;
+    margin-top: 100px
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+
+}
+
+.row {
+    height: 100px;
+}
+
+.col {
+    height: 100px;
+    width: 100px;
+    float: left;
+    text-align: center;
+    line-height: 100px;
+}
+
+.col:hover {
+    background-color: lightgray
+}
+.border-b {
+    border-bottom: 10px solid black;
+} */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    color:seashell;
+    display: flex;
+    font-family: sans-serif;
+    justify-content: center;
+
+}
+ .container {
+     background-color: peru;
+     margin: 50px;
+     padding: 50px;
+     border-radius: 25px;
+     
+}
+
+.title {
+    text-align: center;
+}
+
+.title span {
+    color: purple
+}
+
+
+.status-action {
+    display: flex;
+    margin-top: 25px;
+    font-size: 25px;
+    justify-content: space-around;
+}
+
+.reset {
+    cursor: pointer;
+}
+
+.reset :hover {
+    color:violet;
+}
+
+.game-grid {
+    background: silver;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 15px;
+    margin-top: 50px;
+}
+
+.game-cell {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 200px;
+    background:rebeccapurple;
+}
+
+.x::after {
+    content: 'x';
+    font-size: 200px;
+}
+
+.o::after {
+    content: 'o';
+    font-size: 225px;
 }
