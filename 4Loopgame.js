@@ -45,7 +45,7 @@ document.querySelector(".game-box").onclick = function (e) {
     }
 }
 
-document.querySelectorAll(".small-box").forEach(function (box) {
+document.querySelectorAll(".game-box").forEach(function (box) {
 
 
 
@@ -61,39 +61,45 @@ document.querySelectorAll(".small-box").forEach(function (box) {
 
 
 
-// for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 8; i++) {
 
-//     document.querySelector("body").innerHTML += `
-// <div class="game-box">
+    document.querySelector("body").innerHTML += `
+<div class="game-box">
 
-// <div class="small-box" id="1">
+<div class="small-box" id="1">
 
-// </div>
-// <div class="small-box" id="2">
+</div>
+<div class="small-box" id="2">
 
-// </div>
-// <div class="small-box" id="3">
+</div>
+<div class="small-box" id="3">
 
-// </div>
-// <div class="small-box" id="4">
+</div>
+<div class="small-box" id="4">
 
-// </div>
-// <div class="small-box" id="5">
+</div>
+<div class="small-box" id="5">
 
-// </div>
-// <div class="small-box" id="6">
+</div>
+<div class="small-box" id="6">
 
-// </div>
-// <div class="small-box" id="7">
+</div>
+<div class="small-box" id="7">
 
-// </div>
-// <div class="small-box" id="8">
+</div>
+<div class="small-box" id="8">
 
-// </div>
-// <div class="small-box" id="9">
+</div>
+<div class="small-box" id="9">
 
-// </div>
+</div>
 
+<<<<<<< HEAD
 // </div>
 // `
 // }
+=======
+</div>
+`
+}
+>>>>>>> fc4751ceeaf5810294fd8111d869f24d0fd6cc7d
