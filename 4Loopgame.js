@@ -45,7 +45,7 @@ document.querySelector(".game-box").onclick = function (e) {
     }
 }
 
-document.querySelectorAll(".small-box").forEach(function (box) {
+document.querySelectorAll(".game-box").forEach(function (box) {
 
 
 
