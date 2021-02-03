@@ -1,23 +1,98 @@
-
-
-/* main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: red solid 2px;
-    flex-wrap: wrap;
-    padding: 1%;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
 }
 
-.bigsquare {
+     html, body{ 
+        min-height: 100vh;
+        overflow: auto;
+      }
+
+/* main {
+
+
+header {
+    text-align: center;
+    width: 100%;
+    font-size: 1.5rem;
+    color: white;
+    top: 0;
+    position: absolute;
+
+    
+    
+}
+
+h1 {
+    line-height: 2;
+    font-weight: bold
+}
+
+body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    flex-wrap: wrap;
-    border: blue solid 2px;
-    width: 30%;
-    padding: 1%;
-    margin: 0.5%;
+    align-items: center;
+    background-color: #407294;
+    
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 85vw;
+    height: 60vh;
+    
+
+}
+main > div {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 7px;
+}
+.game-box {
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: repeat(3, 3fr);
+    margin: 5px
+    
+}
+
+.small-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15%;
+    color: #407294;
+    border: white solid 3px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+}
+
+
+td:hover {
+    cursor: pointer;
+    background-color: gainsboro;
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+
+.restart {
+    padding: 5px 5px;
+    border-radius: 7px; 
+    border: 3px solid white;
+    background-color: #407294; 
+    color: white; 
+    font-size: 60px;
+  }
+.restart:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 div {
@@ -133,3 +208,26 @@ body {
     content: 'o';
     font-size: 225px;
 }
+.red {
+    background-color: red;
+
+}
+
+.blue {
+    background-color: blue;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+    
+}
+
+td {
+    background-color: #d5e1df;
+    border-radius: 7px;
+    width: 20px;
+    height: 20px;
+    
+}
+
