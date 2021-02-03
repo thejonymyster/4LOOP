@@ -27,6 +27,9 @@ h1 {
     line-height: 2;
     font-weight: bold
 }
+h2 {
+    font-size: 2rem;
+}
 
 body {
     display: flex;
@@ -43,6 +46,7 @@ main {
     text-align: center;
     width: 85vw;
     height: 60vh;
+    margin-top: 150px;
     
 
 }
@@ -87,6 +91,7 @@ td:hover {
     background-color: #407294; 
     color: white; 
     font-size: 60px;
+    margin-top: 50px;
   }
 .restart:hover {
     cursor: pointer;
