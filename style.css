@@ -44,6 +44,7 @@ main {
     display: flex;
     justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
     width: 85vw;
     height: 60vh;
     margin-top: 150px;

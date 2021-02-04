@@ -2,9 +2,10 @@
 let turn = 0;
 
 class Box {
-    constructor() {
+    constructor(rowNum) {
         this.x = null
         this.o = null
+        this.rowNum = rowNum
         this.pointerEvents = false;
     }
     draw(x) {
@@ -14,11 +15,11 @@ class Box {
 
         let table = document.createElement('table')
         div.append(table)
-        for (let i = 0; i < 3; i++) {
+        for (let i = 1; i < 4; i++) {
             let tr = document.createElement('tr')
             table.append(tr)
-            for (let j = 0; j < 3; j++) {
-                new Cell(tr).draw()
+            for (let j = 1; j < 4; j++) {
+                new Cell(tr, i, j, this.rowNum).draw()
             }
 
         }
@@ -28,14 +29,18 @@ class Box {
 
 
 class Cell {
-    constructor(row) {
+    constructor(row, block, microBlock, rowNum) {
         this.x = null
         this.o = null
+        this.rowNum = rowNum
         this.row = row
+        this.block = block;
+        this.microBlock = microBlock
 
     }
     draw() {
         let td = document.createElement("td")
+        td.classList.add(`${this.rowNum}-${this.block}-${this.microBlock}`)
         td.onclick = function () {
             turn++
             this.innerHTML = turn % 2 ? 'X' : 'O'
@@ -47,5 +52,5 @@ class Cell {
 
 
 for (i = 1; i < 10; i++) {
-    new Box().draw(i)
+    new Box(i).draw(i)
 }
