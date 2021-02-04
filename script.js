@@ -57,7 +57,7 @@ class Cell {
     cellNumber++;
     td.onclick = function (e) {
       currentCell = e.target.id
-      if ((boxFlag == 9) || regionMatch(currentCell, boxFlag)){
+      if (((boxFlag == 9) || regionMatch(currentCell, boxFlag)) && (fullboard[currentCell] == "")){
         this.innerHTML = turn % 2 ? 'X' : 'O'
       fullboard[currentCell] = turn % 2 ? 'X' : 'O'
       turn++
