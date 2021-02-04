@@ -1,6 +1,8 @@
 
 let turn = 0;
+let cellNumber = 0
 
+// let gameBoard = [0,1,2..,80]
 class Box {
     constructor(rowNum) {
         this.x = null
@@ -40,15 +42,17 @@ class Cell {
     }
     draw() {
         let td = document.createElement("td")
-        td.classList.add(`${this.rowNum}-${this.block}-${this.microBlock}`)
-        td.onclick = function () {
+        td.setAttribute('id', cellNumber)
+        cellNumber++
+        td.onclick = function (e) {
             turn++
             this.innerHTML = turn % 2 ? 'X' : 'O'
+            console.log(e.target.id)
         }
         this.row.append(td)
     }
 }
-
+console.log("hi")
 
 
 for (i = 1; i < 10; i++) {
