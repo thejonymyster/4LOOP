@@ -46,19 +46,19 @@ class Cell {
     td.setAttribute('id', cellNumber);
     cellNumber++;
     td.onclick = function (e) {
-      turn++;
-      this.innerHTML = turn % 2 ? 'X' : 'O';
-      fullboard[e.target.id] = turn % 2 ? 'X' : 'O';
+                   turn++
+         this.innerHTML = turn % 2 ? 'X' : 'O'
+                    fullboard[e.target.id] = turn % 2 ? 'X' : 'O'
+                    console.log(e.target.id)
+                    console.log(fullboard)
     };
     this.row.append(td);
+    // console.log(e.target.id)
   }
 }
 for (i = 1; i < 10; i++) {
   new Box().draw(i);
 }
-
-
-
 
 
 
