@@ -5,8 +5,8 @@ let boxFlag = 9
 
 let fullboard = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 
-function regionMatch(cur, flag){
-  for (i = 0; i<73 ;i++){
+function regionMatch(cur){
+  for (i = 0; i<9 ;i++){
     if ((cur >= (9 * i)) && (cur < ((9 * i) + 9))){
       return boxFlag == i
     }
@@ -57,13 +57,15 @@ class Cell {
     cellNumber++;
     td.onclick = function (e) {
       currentCell = e.target.id
-      if (((boxFlag == 9) || regionMatch(currentCell, boxFlag)) && (fullboard[currentCell] == "")){
+      if (((boxFlag == 9) || regionMatch(currentCell)) && (fullboard[currentCell] == "")){
         this.innerHTML = turn % 2 ? 'X' : 'O'
       fullboard[currentCell] = turn % 2 ? 'X' : 'O'
       turn++
       console.log(fullboard)
       boxFlag = (currentCell % 9)
+      console.log(boxFlag)
       } else {
+          
         alert("wrong!")
       }
     };
