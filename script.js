@@ -2,6 +2,8 @@ let turn = 0;
 let cellNumber = 0
 let currentCell = 81
 let boxFlag = 9
+// if boxflag == 9, you can go in any cell, otherwise you can only go in the one cell
+// e.g. boxFlag 0 is top left only, boxFlag 8 is bottom right etc
 
 let fullboard = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 
