@@ -1,4 +1,3 @@
-
 let turn = 0;
 let cellNumber = 0
 
@@ -15,7 +14,6 @@ const winCombo = [
     [2, 4, 6],
 ];
 
-// let gameBoard = [0,1,2..,80]
 class Box {
     constructor(rowNum) {
         this.x = null
@@ -60,13 +58,14 @@ class Cell {
         td.onclick = function (e) {
             turn++
             this.innerHTML = turn % 2 ? 'X' : 'O'
+            fullboard[e.target.id] = turn % 2 ? 'X' : 'O'
             console.log(e.target.id)
+            console.log(fullboard)
         }
         this.row.append(td)
     }
 }
 console.log("hi")
-
 
 for (i = 1; i < 10; i++) {
     new Box(i).draw(i)
