@@ -1,17 +1,27 @@
 let turn = 0;
 let cellNumber = 0
+let currentCell = 81
+let boxFlag = 9
 
 let fullboard = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 
+function regionMatch(cur, flag){
+  for (i = 0; i<73 ;i++){
+    if ((cur >= (9 * i)) && (cur < ((9 * i) + 9))){
+      return boxFlag == i
+    }
+  }
+}
+
 const winCombo = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
 ];
 
 class Box {
@@ -46,11 +56,16 @@ class Cell {
     td.setAttribute('id', cellNumber);
     cellNumber++;
     td.onclick = function (e) {
-                   turn++
-         this.innerHTML = turn % 2 ? 'X' : 'O'
-                    fullboard[e.target.id] = turn % 2 ? 'X' : 'O'
-                    console.log(e.target.id)
-                    console.log(fullboard)
+      currentCell = e.target.id
+      if ((boxFlag == 9) || regionMatch(currentCell, boxFlag)){
+        this.innerHTML = turn % 2 ? 'X' : 'O'
+      fullboard[currentCell] = turn % 2 ? 'X' : 'O'
+      turn++
+      console.log(fullboard)
+      boxFlag = (currentCell % 9)
+      } else {
+        alert("wrong!")
+      }
     };
     this.row.append(td);
     // console.log(e.target.id)
@@ -95,9 +110,9 @@ for (i = 1; i < 10; i++) {
 //             this.innerHTML = 'hi'
 //         }
 
-        // document.querySelector("body").append(td)
+// document.querySelector("body").append(td)
 
-        // let turn = 0;
+// let turn = 0;
 
 // class Box {
 //     constructor(rowNum) {
@@ -123,7 +138,7 @@ for (i = 1; i < 10; i++) {
 //             //     }
 
 //             // }
-        
+
 
 
 
