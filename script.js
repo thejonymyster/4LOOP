@@ -1,5 +1,6 @@
 let turn = 0;
 let cellNumber = 0
+let boxNumber = 0
 let currentCell = 81
 let boxFlag = 9
 // if boxflag == 9, you can go in any cell, otherwise you can only go in the one cell
@@ -27,17 +28,21 @@ const winCombo = [
 ];
 
 class Box {
-  constructor() {
+  constructor(x) {
     this.x = null;
     this.o = null;
     this.pointerEvents = false;
+    this.boxId= x;
   }
   draw(x) {
     let div = document.createElement('div');
+    div.setAttribute("id", this.boxId - 1 + 100)
     div.classList.add('small-box');
     document.body.querySelector('.game-box').append(div);
     let table = document.createElement('table');
     div.append(table);
+    // document.querySelector(".small-box").setAttribute("id", boxNumber);
+    // boxNumber++;
     for (let i = 0; i < 3; i++) {
       let tr = document.createElement('tr');
       table.append(tr);
@@ -76,12 +81,14 @@ class Cell {
   }
 }
 for (i = 1; i < 10; i++) {
-  new Box().draw(i);
+  new Box(i).draw(i);
 }
 
-
-
-
+if (boxFlag < 9){
+  // target smallbox (id=boxflag) add css (fancy)
+  document.getElementById('#101').style.color = "black"
+  console.log("hello")
+}
 
 
 
