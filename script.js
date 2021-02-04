@@ -1,5 +1,10 @@
-class Cell {
-    constructor() {
+
+let turn = 0;
+let cellNumber = 0
+
+// let gameBoard = [0,1,2..,80]
+class Box {
+    constructor(rowNum) {
         this.x = null
         this.o = null
 
@@ -45,35 +50,22 @@ class Cell {
 
 
 
-        for (let i = 0; i < 50; i++) {
-            new Cell().draw()
-
+    }
+    draw() {
+        let td = document.createElement("td")
+        td.setAttribute('id', cellNumber)
+        cellNumber++
+        td.onclick = function (e) {
+            turn++
+            this.innerHTML = turn % 2 ? 'X' : 'O'
+            console.log(e.target.id)
         }
+        this.row.append(td)
+    }
+}
+console.log("hi")
 
 
-        class Cell {
-            constructor(row, block, microBlock, rowNum) {
-                this.x = null
-                this.o = null
-                this.rowNum = rowNum
-                this.row = row
-                this.block = block;
-                this.microBlock = microBlock
-
-            }
-            draw() {
-                let td = document.createElement("td")
-                td.classList.add(`${this.rowNum}-${this.block}-${this.microBlock}`)
-                td.onclick = function () {
-                    turn++
-                    this.innerHTML = turn % 2 ? 'X' : 'O'
-                }
-                this.row.append(td)
-            }
-        }
-
-
-
-        for (i = 1; i < 10; i++) {
-            new Box(i).draw(i)
-        }
+for (i = 1; i < 10; i++) {
+    new Box(i).draw(i)
+}
