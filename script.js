@@ -63,6 +63,8 @@ class Box {
 
 
 
+
+
     }
     draw() {
         let td = document.createElement("td")
