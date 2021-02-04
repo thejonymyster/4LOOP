@@ -20,8 +20,13 @@ header {
     position: absolute;
 
     
+ 
+
+}    
+
     
-}
+    
+
 
 h1 {
     line-height: 2;
@@ -90,8 +95,9 @@ td:hover {
     border: 3px solid white;
     background-color: #407294; 
     color: white; 
-    font-size: 60px;
+    font-size: 40px;
     margin-top: 50px;
+    
   }
 .restart:hover {
     cursor: pointer;
