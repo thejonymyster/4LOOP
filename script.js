@@ -35,45 +35,26 @@ class Cell {
     test() {
         console.log('This is coming from the parent!!!')
     }
-
-
     fill(cell) {
-        // console.log(cell, this)
+        console.log(cell, this)
         cell ? cell.innerHTML = turn % 2 ? 'X' : 'O' : this.box.innerHTML = turn % 2 ? 'X' : 'O'
     }
-
-
     draw() {
-        // console.log(this)
+        console.log(this)
         let td = document.createElement('td');
         td.setAttribute('id', cellNumber);
         cellNumber++;
-
-
         td.onclick = (e) => {
-
             currentCell = e.target.id
             if (((boxFlag == 9) || regionMatch(currentCell)) && (fullboard[currentCell] == "")) {
                 // e.target.innerHTML = turn % 2 ? 'X' : 'O'
                 fullboard[currentCell] = turn % 2 ? 'X' : 'O'
                 // parent.arr.push(X or O) totally would work too 
-
+                boxFlag = (currentCell % 9)
                 this.pushToBox()
                 this.fill(e.target)
-
-                console.log(!!globalWin[currentCell % 9])
-                if (!!globalWin[currentCell % 9]) {
-                    boxFlag = 9
-                    console.log("it should be working")
-                } else {
-                    boxFlag = (currentCell % 9)
-                }
-
                 turn++
-
-
             } else {
-
                 alert("wrong!")
             }
         };
@@ -124,44 +105,40 @@ class Box extends Cell {
         }
         return false
     }
-
     pushParent(row, column) {
-
         this.arr[row * 3 + column] = turn % 2 ? 'X' : 'O'
-
         console.log("Did i win? ", this.checkWin())
-
         if (this.checkWin()) {
             this.win = 1
             super.fill()
             console.log(this.boxId - 100)
-            globalWin[this.boxId - 1] = turn % 2 ? 'X' : 'O'
-
+            globalWin[this.boxId] = turn % 2 ? 'X' : 'O'
             console.log("DID I WIN!! LIKE FOR REALL!!!? ", this.checkGlobalWin())
         }
-        draw(x) {
-            // console.log(this);
-            // super.draw();
-            // this.pushParent()
-            let div = document.createElement('div');
-            this.box = div
-            div.setAttribute("id", this.boxId - 1 + 100)
-            div.classList.add('small-box');
-            document.body.querySelector('.game-box').append(div);
-            let table = document.createElement('table');
-            div.append(table);
-            // document.querySelector(".small-box").setAttribute("id", boxNumber);
-            // boxNumber++;
-            for (let i = 0; i < 3; i++) {
-                let tr = document.createElement('tr');
-                table.append(tr);
-                for (let j = 0; j < 3; j++) {
-                    new Cell(tr, () => this.pushParent(i, j), div).draw();
-                }
+    }
+    draw(x) {
+        // console.log(this);
+        // super.draw();
+        // this.pushParent()
+        let div = document.createElement('div');
+        this.box = div
+        div.setAttribute("id", this.boxId - 1 + 100)
+        div.classList.add('small-box');
+        document.body.querySelector('.game-box').append(div);
+        let table = document.createElement('table');
+        div.append(table);
+        // document.querySelector(".small-box").setAttribute("id", boxNumber);
+        // boxNumber++;
+        for (let i = 0; i < 3; i++) {
+            let tr = document.createElement('tr');
+            table.append(tr);
+            for (let j = 0; j < 3; j++) {
+                new Cell(tr, () => this.pushParent(i, j), div).draw();
             }
         }
     }
-    for(let i = 1; i < 10; i++) {
+}
+for (i = 1; i < 10; i++) {
     new Box(i).draw(i);
 }
 if (boxFlag < 9) {
@@ -169,96 +146,11 @@ if (boxFlag < 9) {
     document.getElementById('#101').style.color = "black"
     console.log("hello")
 }
-
-
-
-
-
-
 document.querySelector(".small-box").onclick = function (e) {
-    // console.log(e.target)
+    console.log(e.target)
     if (boxFlag < 9) {
         console.log("hello")
         // target smallbox (id=boxflag) add css (fancy)
         document.getElementById(`10${boxFlag}`).style.backgroundColor = "black"
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class Box {
-//     constructor(rowNum) {
-//         this.x = null
-//         this.o = null
-
-//     }
-//     draw() {
-//         let td = document.createElement("td")
-//         console.log(td)
-
-//         td.onclick = function () {
-//             this.innerHTML = 'hi'
-//         }
-
-// document.querySelector("body").append(td)
-
-// let turn = 0;
-
-// class Box {
-//     constructor(rowNum) {
-//         this.x = null
-//                 this.o = null
-//                 this.rowNum = rowNum
-//                 this.pointerEvents = false;
-//             }
-//             // draw(x) {
-//             //     let div = document.createElement('div')
-//             //     div.classList.add('small-box')
-//             //     document.body.querySelector('.game-box').append(div)
-
-//             //     let table = document.createElement('table')
-//             //     div.append(table)
-//             //     for (let i = 1; i < 4; i++) {
-//             //         let tr = document.createElement('tr')
-//             //         table.append(tr)
-//             //         for (let j = 1; j < 4; j++) {
-//             //             new Cell(tr, i, j, this.rowNum).draw()
-//             //         }
-
-//             //     }
-
-//             // }
-
-
-
-
-//     draw() {
-//         let td = document.createElement("td")
-//         td.setAttribute('id', cellNumber)
-//         cellNumber++
-//         td.onclick = function (e) {
-//             turn++
-//             this.innerHTML = turn % 2 ? 'X' : 'O'
-//             fullboard[e.target.id] = turn % 2 ? 'X' : 'O'
-//             console.log(e.target.id)
-//             console.log(fullboard)
-//         }
-//         // this.row.append(td)
-//     }
-// }
-// console.log("hi")
-
-// for (i = 1; i < 10; i++) {
-//     new Box(i).draw(i)
-// }
