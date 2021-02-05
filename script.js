@@ -44,13 +44,13 @@ class Cell {
 
 
   fill(cell) {
-    console.log(cell, this)
+    // console.log(cell, this)
     cell ? cell.innerHTML = turn % 2 ? 'X' : 'O' : this.box.innerHTML = turn % 2 ? 'X' : 'O'
   }
 
 
   draw() {
-    console.log(this)
+    // console.log(this)
     let td = document.createElement('td');
     td.setAttribute('id', cellNumber);
     cellNumber++;
@@ -64,10 +64,16 @@ class Cell {
         fullboard[currentCell] = turn % 2 ? 'X' : 'O'
         // parent.arr.push(X or O) totally would work too 
 
-        boxFlag = (currentCell % 9)
-
         this.pushToBox()
         this.fill(e.target)
+
+        console.log(!!globalWin[currentCell % 9])
+        if (!!globalWin[currentCell % 9]) {
+          boxFlag = 9
+          console.log("it should be working")
+        } else {
+          boxFlag = (currentCell % 9)
+        }
 
         turn++
 
@@ -148,7 +154,7 @@ class Box extends Cell {
       this.win = 1
       super.fill()
       console.log(this.boxId - 100)
-      globalWin[this.boxId] = turn % 2 ? 'X' : 'O'
+      globalWin[this.boxId - 1] = turn % 2 ? 'X' : 'O'
 
       console.log("DID I WIN!! LIKE FOR REALL!!!? ", this.checkGlobalWin())
     }
@@ -180,7 +186,6 @@ class Box extends Cell {
     }
   }
 }
-
 for (i = 1; i < 10; i++) {
   new Box(i).draw(i);
 }
@@ -195,6 +200,16 @@ if (boxFlag < 9) {
 
 
 
+
+document.querySelector(".small-box").onclick = function (e) {
+  // console.log(e.target)
+  if (boxFlag < 9) {
+    console.log("hello")
+    // target smallbox (id=boxflag) add css (fancy)
+    document.getElementById(`10${boxFlag}`).style.backgroundColor = "black"
+  }
+
+}
 
 
 
