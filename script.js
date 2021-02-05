@@ -8,6 +8,9 @@ let boxFlag = 9
 
 let fullboard = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 
+let globalWin = ["", "", "", "", "", "", "", "", ""]
+
+
 function regionMatch(cur) {
   for (i = 0; i < 9; i++) {
     if ((cur >= (9 * i)) && (cur < ((9 * i) + 9))) {
@@ -28,40 +31,47 @@ const winCombo = [
 ];
 
 class Cell {
-  constructor(row, pushToParent) {
+  constructor(row, pushToBox, box) {
     this.x = null;
     this.o = null;
     this.row = row;
-    this.pushToParent = pushToParent
+    this.pushToBox = pushToBox
+    this.box = box
   }
   test() {
     console.log('This is coming from the parent!!!')
   }
 
 
-
+  fill(cell) {
+    console.log(cell, this)
+    cell ? cell.innerHTML = turn % 2 ? 'X' : 'O' : this.box.innerHTML = turn % 2 ? 'X' : 'O'
+  }
 
 
   draw() {
-
+    console.log(this)
     let td = document.createElement('td');
     td.setAttribute('id', cellNumber);
     cellNumber++;
-    // let pushToParent = this.pushToParent
+
 
     td.onclick = (e) => {
-      this.pushToParent()
+
       currentCell = e.target.id
       if (((boxFlag == 9) || regionMatch(currentCell)) && (fullboard[currentCell] == "")) {
-        e.target.innerHTML = turn % 2 ? 'X' : 'O'
+        // e.target.innerHTML = turn % 2 ? 'X' : 'O'
         fullboard[currentCell] = turn % 2 ? 'X' : 'O'
-        // parent.arr.push(X or O)
-        //console.log(this)
-        //console.log(turn)
-        turn++
-        //console.log(fullboard)
+        // parent.arr.push(X or O) totally would work too 
+
         boxFlag = (currentCell % 9)
-        //console.log(boxFlag)
+
+        this.pushToBox()
+        this.fill(e.target)
+
+        turn++
+
+
       } else {
 
         alert("wrong!")
@@ -81,6 +91,7 @@ class Box extends Cell {
     this.boxId = x;
     this.win = 0
     this.arr = ["", "", "", "", "", "", "", "", ""]
+    this.box = null;
   }
 
   callTest() {
@@ -92,6 +103,7 @@ class Box extends Cell {
     for (let i = 0; i < 8; i++) {
       if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])) {
         if ((this.arr[winCombo[i][0]] !== "") && (this.arr[winCombo[i][1]] !== "") && (this.arr[winCombo[i][2]] !== "")) {
+
           return true
         }
       }
@@ -106,11 +118,40 @@ class Box extends Cell {
   }
 
 
+  checkGlobalWin() {
+    let tie = true;
+    for (let i = 0; i < 8; i++) {
+      if ((globalWin[winCombo[i][0]] == globalWin[winCombo[i][1]]) && (globalWin[winCombo[i][1]] == globalWin[winCombo[i][2]])) {
+        if ((globalWin[winCombo[i][0]] !== "") && (globalWin[winCombo[i][1]] !== "") && (globalWin[winCombo[i][2]] !== "")) {
+
+          return true
+        }
+      }
+
+      if (globalWin[i] === "") { //Checks if a tie
+        tie = false
+      }
+    }
+
+
+    return false
+  }
+
   pushParent(row, column) {
-    console.log(row, column)
+
     this.arr[row * 3 + column] = turn % 2 ? 'X' : 'O'
-    console.log(this)
+
     console.log("Did i win? ", this.checkWin())
+
+    if (this.checkWin()) {
+      this.win = 1
+      super.fill()
+      globalWin[this.boxId - 100] = turn % 2 ? 'X' : 'O'
+
+      console.log("DID I WIN!! LIKE FOR REALL!!!? ", checkGlobalWin())
+    }
+
+
   }
 
   draw(x) {
@@ -119,6 +160,7 @@ class Box extends Cell {
     // this.pushParent()
 
     let div = document.createElement('div');
+    this.box = div
     div.setAttribute("id", this.boxId - 1 + 100)
     div.classList.add('small-box');
     document.body.querySelector('.game-box').append(div);
@@ -130,7 +172,8 @@ class Box extends Cell {
       let tr = document.createElement('tr');
       table.append(tr);
       for (let j = 0; j < 3; j++) {
-        new Cell(tr, () => this.pushParent(i, j)).draw();
+
+        new Cell(tr, () => this.pushParent(i, j), div).draw();
       }
     }
   }
