@@ -148,7 +148,7 @@ class Box extends Cell {
       super.fill()
       globalWin[this.boxId - 100] = turn % 2 ? 'X' : 'O'
 
-      console.log("DID I WIN!! LIKE FOR REALL!!!? ", checkGlobalWin())
+      console.log("DID I WIN!! LIKE FOR REALL!!!? ", this.checkGlobalWin())
     }
 
 
