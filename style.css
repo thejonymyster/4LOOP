@@ -22,16 +22,16 @@ header {
 h1 {
   line-height: 2;
   font-weight: bold;
-  color:paleturquoise
+  color: white
  
 }
 
 h1 > span {
-    color:teal;
+    color: white;
     font-size: 20px;
     
    }
-git add .bluegit 
+ 
 
 h2 {
   font-size: 2rem;
