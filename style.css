@@ -21,10 +21,17 @@ header {
 
 h1 {
   line-height: 2;
-  font-weight: bolder;
-  position: relative;
+  font-weight: bold;
+  color:paleturquoise
+ 
 }
 
+h1 > span {
+    color:teal;
+    font-size: 20px;
+    
+   }
+git add .bluegit 
 
 h2 {
   font-size: 2rem;
@@ -64,7 +71,7 @@ main > div {
   justify-content: center;
   align-items: center;
   font-size: 100%;
-  color: #407294;
+  color: #03273f;
   border: white solid 3px;
   margin: 10px;
   background-color: white;
