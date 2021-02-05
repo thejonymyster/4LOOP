@@ -22,7 +22,16 @@ header {
 h1 {
   line-height: 2;
   font-weight: bold;
+  color:paleturquoise
+ 
 }
+
+h1 > span {
+    color:teal;
+    font-size: 20px;
+   }
+
+
 h2 {
   font-size: 2rem;
 }
@@ -60,7 +69,7 @@ main > div {
   justify-content: center;
   align-items: center;
   font-size: 100%;
-  color: #407294;
+  color: #03273f;
   border: white solid 3px;
   margin: 10px;
   background-color: white;
@@ -71,7 +80,7 @@ main > div {
 
 td:hover {
   cursor: pointer;
-  background-color: green;
+  background-color:rgba(217, 255, 0, 0.973);
   transform: scale(1.2);
   transition: 0.5s;
 }
