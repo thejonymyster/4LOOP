@@ -273,7 +273,7 @@ function goAgain() {
 
 function dumbAI() {
   document.querySelectorAll('.small-box')[4].querySelector('td').click()
-  setInterval(goAgain, 100)
+  setInterval(goAgain, 200)
 }
 
 //setTimeout(() => {
