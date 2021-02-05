@@ -78,13 +78,23 @@ class Cell {
             console.log(smallBox)
             smallBox.classList.add("next")
           }
-
+          // if (document.querySelectorAll('.next').length > 2) {
+          //   for (let smallBox of smallBoxes) {
+          //     console.log(smallBox)
+          //     smallBox.classList.remove("next")
+          //   }
+          // }
 
 
         } else {
           boxFlag = (currentCell % 9)
         }
-        console.log(this.box)
+        let smallBoxes = document.querySelectorAll(".small-box")
+        for (let smallBox of smallBoxes) {
+          console.log(smallBox)
+          smallBox.classList.remove("next")
+        }
+
         this.box.classList.remove("next")
         document.querySelectorAll(".small-box")[boxFlag].classList.add("next")
         // if (boxFlag === undefined){
