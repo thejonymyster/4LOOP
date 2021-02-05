@@ -56,6 +56,7 @@ main > div {
   grid-template-columns: repeat(3, 3fr);
   grid-template-rows: repeat(3, 3fr);
   margin: 5px;
+  
 }
 
 .small-box {
@@ -72,6 +73,10 @@ main > div {
   height: 150px;
   font-size: 75px;
   font-weight: bold;
+  /* transition: border  2s; */
+}
+.next {
+  border: black solid 7px;
 }
 
 td:hover {
@@ -126,4 +131,10 @@ td {
   
 }
 
-
+.turns {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin-top: 70px;
+  margin-bottom: 20px;
+}

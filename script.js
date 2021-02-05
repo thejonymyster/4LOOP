@@ -1,4 +1,4 @@
-let turn = 0;
+let turn = 1;
 let cellNumber = 0
 let boxNumber = 0
 let currentCell = 81
@@ -37,6 +37,7 @@ class Cell {
     this.row = row;
     this.pushToBox = pushToBox
     this.box = box
+
   }
   test() {
     console.log('This is coming from the parent!!!')
@@ -47,6 +48,7 @@ class Cell {
     // console.log(cell, this)
     cell ? cell.innerHTML = turn % 2 ? 'X' : 'O' : this.box.innerHTML = turn % 2 ? 'X' : 'O'
   }
+
 
 
   draw() {
@@ -63,7 +65,7 @@ class Cell {
         // e.target.innerHTML = turn % 2 ? 'X' : 'O'
         fullboard[currentCell] = turn % 2 ? 'X' : 'O'
         // parent.arr.push(X or O) totally would work too 
-
+        document.querySelector(".turns").innerHTML = `${fullboard[currentCell] = turn % 2 ? 'O' : 'X'}'s Turn`
         this.pushToBox()
         this.fill(e.target)
 
@@ -71,16 +73,29 @@ class Cell {
         if (!!globalWin[currentCell % 9]) {
           boxFlag = 9
           console.log("it should be working")
+          let smallBoxes = document.querySelectorAll(".small-box")
+          for (let smallBox of smallBoxes) {
+            console.log(smallBox)
+            smallBox.classList.add("next")
+          }
+
+
+
         } else {
           boxFlag = (currentCell % 9)
         }
-
+        console.log(this.box)
+        this.box.classList.remove("next")
+        document.querySelectorAll(".small-box")[boxFlag].classList.add("next")
+        // if (boxFlag === undefined){
+        //   fullboard[currentCell] = turn
+        // }
         turn++
 
 
       } else {
 
-        alert("wrong!")
+        console.log("wrong!")
       }
     };
     this.row.append(td);
@@ -157,6 +172,10 @@ class Box extends Cell {
       globalWin[this.boxId - 1] = turn % 2 ? 'X' : 'O'
 
       console.log("DID I WIN!! LIKE FOR REALL!!!? ", this.checkGlobalWin())
+      if (this.checkGlobalWin()) {
+        alert(turn % 2 ? 'X wins' : 'O wins')
+        window.location.reload()
+      }
     }
 
 
@@ -206,7 +225,7 @@ document.querySelector(".small-box").onclick = function (e) {
   if (boxFlag < 9) {
     console.log("hello")
     // target smallbox (id=boxflag) add css (fancy)
-    document.getElementById(`10${boxFlag}`).style.backgroundColor = "black"
+    document.getElementById(`10${boxFlag}`).style.backgroundColor = "white"
   }
 
 }
@@ -214,6 +233,46 @@ document.querySelector(".small-box").onclick = function (e) {
 
 
 
+
+
+
+function goAgain() {
+  console.log(boxFlag)
+  if (boxFlag === 9) {
+    let allBoxes = document.querySelectorAll('.small-box')
+    for (let box of allBoxes) {
+      console.log(box.children, box.querySelectorAll('td'), box.querySelectorAll('td').length)
+      if (box.querySelectorAll('td').length === 9) {
+        let randomBox = box.querySelectorAll('td')[Math.floor(Math.random() * 9)]
+        console.log(randomBox, '?')
+        if (!randomBox.innerHTML) {
+          randomBox.click()
+        }
+      }
+    }
+  } else {
+    let nextBox = document.querySelectorAll(".small-box")[boxFlag]
+    console.log(nextBox)
+    let randomBox = nextBox.querySelectorAll('td')[Math.floor(Math.random() * 9)]
+    console.log(randomBox)
+    if (!randomBox.innerHTML) {
+      randomBox.click()
+    }
+  }
+}
+
+function dumbAI() {
+  document.querySelectorAll('.small-box')[4].querySelector('td').click()
+  setInterval(goAgain, 100)
+}
+
+//setTimeout(() => {
+  // setInterval(goAgain, 1000)
+//}, 3000)
+
+
+
+// 
 
 
 
