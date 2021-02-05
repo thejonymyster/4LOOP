@@ -8,9 +8,9 @@ let boxFlag = 9
 
 let fullboard = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 
-function regionMatch(cur){
-  for (i = 0; i<9 ;i++){
-    if ((cur >= (9 * i)) && (cur < ((9 * i) + 9))){
+function regionMatch(cur) {
+  for (i = 0; i < 9; i++) {
+    if ((cur >= (9 * i)) && (cur < ((9 * i) + 9))) {
       return boxFlag == i
     }
   }
@@ -27,14 +27,63 @@ const winCombo = [
   [2, 4, 6],
 ];
 
-class Box {
+class Cell {
+  constructor(row) {
+    this.x = null;
+    this.o = null;
+    this.row = row;
+  }
+  draw() {
+    let td = document.createElement('td');
+    td.setAttribute('id', cellNumber);
+    cellNumber++;
+    td.onclick = function (e) {
+      currentCell = e.target.id
+      if (((boxFlag == 9) || regionMatch(currentCell)) && (fullboard[currentCell] == "")) {
+        this.innerHTML = turn % 2 ? 'X' : 'O'
+        fullboard[currentCell] = turn % 2 ? 'X' : 'O'
+        // parent.arr.push(X or O)
+        console.log(this)
+        console.log(turn)
+        turn++
+        console.log(fullboard)
+        boxFlag = (currentCell % 9)
+        console.log(boxFlag)
+      } else {
+
+        alert("wrong!")
+      }
+    };
+    this.row.append(td);
+    // console.log(e.target.id)
+  }
+}
+
+class Box extends Cell {
   constructor(x) {
+    super();
     this.x = null;
     this.o = null;
     this.pointerEvents = false;
-    this.boxId= x;
+    this.boxId = x;
+    this.win = 0
+    this.arr = ["", "", "", "", "", "", "", "", ""]
   }
+
+  checkWin() {
+    for (let i = 0; i < 8; i++) {
+      if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])) {
+        if ((this.arr[winCombo[i][0]] !== "") && (this.arr[winCombo[i][1]] !== "") && (this.arr[winCombo[i][2]] !== "")) {
+          return true
+        }
+      }
+    }
+    return false
+  }
+
   draw(x) {
+    console.log(this);
+    // super.draw();
     let div = document.createElement('div');
     div.setAttribute("id", this.boxId - 1 + 100)
     div.classList.add('small-box');
@@ -52,39 +101,12 @@ class Box {
     }
   }
 }
-class Cell {
-  constructor(row) {
-    this.x = null;
-    this.o = null;
-    this.row = row;
-  }
-  draw() {
-    let td = document.createElement('td');
-    td.setAttribute('id', cellNumber);
-    cellNumber++;
-    td.onclick = function (e) {
-      currentCell = e.target.id
-      if (((boxFlag == 9) || regionMatch(currentCell)) && (fullboard[currentCell] == "")){
-        this.innerHTML = turn % 2 ? 'X' : 'O'
-      fullboard[currentCell] = turn % 2 ? 'X' : 'O'
-      turn++
-      console.log(fullboard)
-      boxFlag = (currentCell % 9)
-      console.log(boxFlag)
-      } else {
-          
-        alert("wrong!")
-      }
-    };
-    this.row.append(td);
-    // console.log(e.target.id)
-  }
-}
+
 for (i = 1; i < 10; i++) {
   new Box(i).draw(i);
 }
 
-if (boxFlag < 9){
+if (boxFlag < 9) {
   // target smallbox (id=boxflag) add css (fancy)
   document.getElementById('#101').style.color = "black"
   console.log("hello")
