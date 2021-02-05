@@ -83,15 +83,16 @@ class Cell {
 }
 
 class Box extends Cell {
-  constructor(x) {
+  constructor(num) {
     super();
     this.x = null;
     this.o = null;
     this.pointerEvents = false;
-    this.boxId = x;
+    this.boxId = num;
     this.win = 0
     this.arr = ["", "", "", "", "", "", "", "", ""]
     this.box = null;
+    this.num = num
   }
 
   callTest() {
@@ -146,7 +147,8 @@ class Box extends Cell {
     if (this.checkWin()) {
       this.win = 1
       super.fill()
-      globalWin[this.boxId - 100] = turn % 2 ? 'X' : 'O'
+      console.log(this.boxId - 100)
+      globalWin[num] = turn % 2 ? 'X' : 'O'
 
       console.log("DID I WIN!! LIKE FOR REALL!!!? ", this.checkGlobalWin())
     }
