@@ -71,8 +71,9 @@ class Cell {
       console.log(fullboard)
       boxFlag = (currentCell % 9)
       console.log(boxFlag)
+      suggest();
       } else {
-          
+        
         alert("wrong!")
       }
     };
@@ -84,18 +85,21 @@ for (i = 1; i < 10; i++) {
   new Box(i).draw(i);
 }
 
-if (boxFlag < 9){
-  // target smallbox (id=boxflag) add css (fancy)
-  document.getElementById('#101').style.color = "black"
+function suggest(){
+
+
+
+document.querySelector(".small-box").onclick = function(e) {
+ console.log(e.target)
+    if (boxFlag < 9){
   console.log("hello")
+  // target smallbox (id=boxflag) add css (fancy)
+  document.getElementById(`10${boxFlag}`).style.backgroundColor = "black"
+}
+   
 }
 
-
-
-
-
-
-
+}
 
 
 
