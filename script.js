@@ -28,27 +28,40 @@ const winCombo = [
 ];
 
 class Cell {
-  constructor(row) {
+  constructor(row, pushToParent) {
     this.x = null;
     this.o = null;
     this.row = row;
+    this.pushToParent = pushToParent
   }
+  test() {
+    console.log('This is coming from the parent!!!')
+  }
+
+
+
+
+
   draw() {
+
     let td = document.createElement('td');
     td.setAttribute('id', cellNumber);
     cellNumber++;
-    td.onclick = function (e) {
+    // let pushToParent = this.pushToParent
+
+    td.onclick = (e) => {
+      this.pushToParent()
       currentCell = e.target.id
       if (((boxFlag == 9) || regionMatch(currentCell)) && (fullboard[currentCell] == "")) {
-        this.innerHTML = turn % 2 ? 'X' : 'O'
+        e.target.innerHTML = turn % 2 ? 'X' : 'O'
         fullboard[currentCell] = turn % 2 ? 'X' : 'O'
         // parent.arr.push(X or O)
-        console.log(this)
-        console.log(turn)
+        //console.log(this)
+        //console.log(turn)
         turn++
-        console.log(fullboard)
+        //console.log(fullboard)
         boxFlag = (currentCell % 9)
-        console.log(boxFlag)
+        //console.log(boxFlag)
       } else {
 
         alert("wrong!")
@@ -70,20 +83,41 @@ class Box extends Cell {
     this.arr = ["", "", "", "", "", "", "", "", ""]
   }
 
+  callTest() {
+    super.test()
+  }
+
   checkWin() {
+    let tie = true;
     for (let i = 0; i < 8; i++) {
       if ((this.arr[winCombo[i][0]] == this.arr[winCombo[i][1]]) && (this.arr[winCombo[i][1]] == this.arr[winCombo[i][2]])) {
         if ((this.arr[winCombo[i][0]] !== "") && (this.arr[winCombo[i][1]] !== "") && (this.arr[winCombo[i][2]] !== "")) {
           return true
         }
       }
+
+      if (this.arr[i] === "") { //Checks if a tie
+        tie = false
+      }
     }
+
+
     return false
   }
 
+
+  pushParent(row, column) {
+    console.log(row, column)
+    this.arr[row * 3 + column] = turn % 2 ? 'X' : 'O'
+    console.log(this)
+    console.log("Did i win? ", this.checkWin())
+  }
+
   draw(x) {
-    console.log(this);
+    // console.log(this);
     // super.draw();
+    // this.pushParent()
+
     let div = document.createElement('div');
     div.setAttribute("id", this.boxId - 1 + 100)
     div.classList.add('small-box');
@@ -96,7 +130,7 @@ class Box extends Cell {
       let tr = document.createElement('tr');
       table.append(tr);
       for (let j = 0; j < 3; j++) {
-        new Cell(tr).draw();
+        new Cell(tr, () => this.pushParent(i, j)).draw();
       }
     }
   }
